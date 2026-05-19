@@ -1,6 +1,151 @@
+/* STARBURN */
+/* hit area larger than stars */
+/* Palettes: https://flatuicolors.com/palette/au, https://flatuicolors.com/palette/cn */
+
 * {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     box-sizing: border-box;
+}
+
+:root {
+    --scale: 1;
+}
+
+/* Animated Gradient: https://codepen.io/P1N2O/pen/pyBNzX */
+body,
+html {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #130f40, #30336b, #3742fa, #ff4757);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Stars */
+#starburn {
+    position: relative;
+    margin: 0 auto;
+    width: min(100vw, 2000px);
+    height: min(100vh, 2000px);
+}
+
+.star {
+    cursor: pointer;
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    appearance: none;
+    border-radius: 50%;
+    outline: 0;
+    border: 0;
+    font-size: 0;
+    font-size: 1vw;
+    line-height: 100%;
+    color: transparent;
+    background: transparent;
+    width: 2%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.4);
+    }
+}
+
+/* animate appear then get larger till vanish */
+/* .star:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+    background-blend-mode: color-dodge;
+}
+*/
+/* HERE! ADD! "Animated Glow Particle Effect" from https://csscrafter.com/css-particle-effects/ */
+/* also check HERE / check license: https://www.jotform.com/blog/particles-animation-codepen-97659/ */
+
+.star:hover,
+.star:focus,
+.star:active {
+    color: #3742fa !important;
+}
+
+.star.s1 {
+    font-size: calc(0.5vw * var(--scale));
+}
+
+.star.s2 {
+    font-size: calc(1vw * var(--scale));
+    animation-delay: 0.75s;
+}
+
+.star.s3 {
+    font-size: calc(1.5vw * var(--scale));
+    animation-delay: 1.25s;
+}
+
+.star.c1 {
+    color: #dff9fb;
+}
+
+.star.c2 {
+    color: #c7ecee;
+}
+
+.star.c3 {
+    color: #95afc0;
+}
+
+.star.c4 {
+    color: #7ed6df;
+}
+
+.star.c5 {
+    color: #22a6b3;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --scale: 1.5;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --scale: 2;
+    }
 }
