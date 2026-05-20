@@ -35,34 +35,34 @@ $(function () {
     // CONTROLS
     var clickTimer;
 
-    $('#starcontrol a').on('mousedown touchstart', function (e) {
+    $('#starcontrol button').on('mousedown', function (e) {
         $(this).trigger('click');
         clickTimer = setInterval(function () {
             $(e.target).trigger('click');
         }, 100);
-    }).on('mouseup mouseleave touchend', function () {
+    }).on('mouseup mouseleave', function () {
         clearInterval(clickTimer);
     });
-    $('#starcontrol a').on('click', function (e) {
+    $('#starcontrol button').on('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        $('#starcontrol a').removeClass('active');
+        $('#starcontrol button').removeClass('active');
     });
-    $('#starcontrol a[href="#up"]').on('click', function (e) {
+    $('#starcontrol button[data-link="#up"]').on('click', function (e) {
         move_bh_up();
     });
-    $('#starcontrol a[href="#down"]').on('click', function (e) {
+    $('#starcontrol button[data-link="#down"]').on('click', function (e) {
         move_bh_down();
     });
-    $('#starcontrol a[href="#left"]').on('click', function (e) {
+    $('#starcontrol button[data-link="#left"]').on('click', function (e) {
         move_bh_left();
     });
-    $('#starcontrol a[href="#right"]').on('click', function (e) {
+    $('#starcontrol button[data-link="#right"]').on('click', function (e) {
         move_bh_right();
     });
 
     $(document).keydown(function (e) {
-        $('#starcontrol a').removeClass('active');
+        $('#starcontrol button').removeClass('active');
         switch (e.code) {
             case 'ArrowUp':
                 move_bh_up();
@@ -85,11 +85,11 @@ $(function () {
     }
 
     function move_bh_up() {
-        $('#starcontrol a[href="#up"]').addClass('active');
-        $('#starcontrol a[href="#down"]').removeClass('disabled');
+        $('#starcontrol button[data-link="#up"]').addClass('active');
+        $('#starcontrol button[data-link="#down"]').removeClass('disabled');
         if ((btmPos + speed) >= 98) {
             btmPos = 98;
-            $('#starcontrol a[href="#up"]').addClass('disabled');
+            $('#starcontrol button[data-link="#up"]').addClass('disabled');
         } else {
             btmPos += speed;
         }
@@ -97,11 +97,11 @@ $(function () {
     }
 
     function move_bh_down() {
-        $('#starcontrol a[href="#down"]').addClass('active');
-        $('#starcontrol a[href="#up"]').removeClass('disabled');
+        $('#starcontrol button[data-link="#down"]').addClass('active');
+        $('#starcontrol button[data-link="#up"]').removeClass('disabled');
         if ((btmPos - speed) <= 0) {
             btmPos = 0;
-            $('#starcontrol a[href="#down"]').addClass('disabled');
+            $('#starcontrol button[data-link="#down"]').addClass('disabled');
         } else {
             btmPos -= speed;
         }
@@ -109,11 +109,11 @@ $(function () {
     }
 
     function move_bh_left() {
-        $('#starcontrol a[href="#left"]').addClass('active');
-        $('#starcontrol a[href="#right"]').removeClass('disabled');
+        $('#starcontrol button[data-link="#left"]').addClass('active');
+        $('#starcontrol button[data-link="#right"]').removeClass('disabled');
         if ((leftPos - speed) <= 0) {
             leftPos = 0;
-            $('#starcontrol a[href="#left"]').addClass('disabled');
+            $('#starcontrol button[data-link="#left"]').addClass('disabled');
         } else {
             leftPos -= speed;
         }
@@ -121,11 +121,11 @@ $(function () {
     }
 
     function move_bh_right() {
-        $('#starcontrol a[href="#right"]').addClass('active');
-        $('#starcontrol a[href="#left"]').removeClass('disabled');
+        $('#starcontrol button[data-link="#right"]').addClass('active');
+        $('#starcontrol button[data-link="#left"]').removeClass('disabled');
         if ((leftPos + speed) >= 98) {
             leftPos = 98;
-            $('#starcontrol a[href="#right"]').addClass('disabled');
+            $('#starcontrol button[data-link="#right"]').addClass('disabled');
         } else {
             leftPos += speed;
         }
@@ -164,7 +164,7 @@ $(function () {
     }
 
 
-    /* Need welcome screen - see html doc
+    /* Need welcome screen - see html doc, hide controls/black hole/counter so just floating white text over maybe border opacity cool so video loads
             Random so different each time / difficulty random
             choose if want video & soothing audio before start so ADA? see Skinless Bark for audio
             if eat all the stars can either play again or download certificate or something fun

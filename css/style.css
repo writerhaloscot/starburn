@@ -220,7 +220,12 @@ video.starvideo {
     padding: 0.75vw;
 }
 
-#starcontrol a {
+#starcontrol button {
+    cursor: pointer;
+    appearance: none;
+    border: 0;
+    outline: 0;
+    background: transparent;
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
@@ -229,16 +234,16 @@ video.starvideo {
     padding: 0 0.5vw;
 }
 
-#starcontrol a:hover,
-#starcontrol a:focus,
-#starcontrol a:active,
-#starcontrol a.active {
+#starcontrol button:hover,
+#starcontrol button:focus,
+#starcontrol button:active,
+#starcontrol button.active {
     text-decoration: none;
     outline: 0;
     color: #ff4757;
 }
 
-#starcontrol a.disabled {
+#starcontrol button.disabled {
     pointer-events: none;
     opacity: 0.4;
     color: #fff !important;
@@ -249,7 +254,7 @@ video.starvideo {
         padding: 1.5vw;
     }
 
-    #starcontrol a {
+    #starcontrol button {
         font-size: 1.5vw;
         letter-spacing: 0.25vw;
         padding: 0 0.75vw;
@@ -261,7 +266,7 @@ video.starvideo {
         padding: 2vw;
     }
 
-    #starcontrol a {
+    #starcontrol button {
         font-size: 2.5vw;
         letter-spacing: 0.3vw;
         padding: 0 1vw;
