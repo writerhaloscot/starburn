@@ -10,34 +10,41 @@
     <meta name="description" content="Become the black hole you were always meant to be. Let no one escape you. Welcome to the end of the universe. Eat the stars before the stars burn you." />
     <meta property="og:title" content="Starburn | Deadflame Studio">
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="">
+    <meta property="og:image" content="https://writerhaloscot.github.io/starburn/media/thumbnail-min.jpg">
     <meta property="og:url" content="/starburn">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:description" content="Become the black hole you were always meant to be. Let no one escape you. Welcome to the end of the universe. Eat the stars before the stars burn you.">
     <meta property="og:site_name" content="Starburn | Deadflame Studio">
     <meta name="twitter:image:alt" content="Starburn | Deadflame Studio">
     <!-- Pixabay Public Domain Image: davidrockdesign-sun-2081062 -->
-    <link rel="shortcut icon" href="media/favicon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="css/style.css?v=1.1" />
+    <link rel="shortcut icon" href="media/favicon.png?v=1" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css?v=1.25" />
 </head>
 
 <body>
 
     <!-- STARBURN -->
-    <!-- Become a black hole. Eat all the stars. -->
-    <!-- Become the black hole you were always meant to be. Let no one escape you. Welcome to the end of the universe. Eat the stars before the stars burn you. For fans of Bust-A-Move and Bejeweled. Mention to turn low power mode off for best effect. -->
+    <!-- Be a black hole. Eat all the stars. -->
+    <!-- Be the black hole at the end of the universe that you were always meant to be. Let no one escape you. Welcome to the end of the universe. Eat the stars before the stars burn you. For fans of Bust-A-Move and Bejeweled. Mention to turn low power mode off for best effect. -->
 
+    <!-- Pixabay Public Domain Videos: 215694.mp4, 215697.mp4, 215695.mp4, 215762.mp4, 138556-769988117.mp4 -->
     <div id="starburn">
-
+        <div id="blackhole">&bull;</div>
+        <div id="starcounter">You have eaten: <span id="starnum">0</span> out of <span id="startotal">0</span> stars.</div>
+        <nav id="starcontrol">
+            <a href="#up">Up</a>
+            <a href="#down" class="disabled">Down</a>
+            <a href="#left" class="disabled">Left</a>
+            <a href="#right">Right</a>
+        </nav>
     </div>
 
-    <video id="starloop" class="starvideo" muted loop autoplay playsinline poster="media/pix-vid-loop-138556-769988117-bg-min.jpg">
-        <source src="media/pix-vid-loop-138556-769988117-min.mp4" type="video/mp4">
+    <video id="starloop" class="starvideo" muted loop autoplay playsinline poster="media/vid-loop-min.jpg">
+        <source src="media/vid-loop-min.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
 
     <div id="stargallery">
-        <!-- Pixabay Public Domain Videos: 215694.mp4, 215697.mp4, 215695.mp4, 215762.mp4, 138556-769988117.mp4 -->
         <video class="starvideo" muted loop autoplay playsinline>
             <source src="media/vid-starburn-min.mp4" type="video/mp4">
             Your browser does not support HTML5 video.
@@ -46,7 +53,7 @@
 
     <!-- SCRIPTS -->
     <script src="js/jquery-4.0.0.min.js"></script>
-    <script src="js/app.js?v=1.1"></script>
+    <script src="js/app.js?v=1.25"></script>
 
 </body>
 
