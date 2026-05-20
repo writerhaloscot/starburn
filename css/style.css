@@ -44,6 +44,7 @@ html {
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
+    height: 100svh;
 }
 
 .star {
@@ -155,6 +156,7 @@ video.starvideo {
     margin: 0 auto;
     width: 100vw;
     height: 100vh;
+    height: 100svh;
     top: 0;
     left: 0;
     right: 0;
