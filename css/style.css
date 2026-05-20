@@ -26,16 +26,14 @@ html {
 }
 
 @keyframes gradient {
-    0% {
+
+    0%,
+    100% {
         background-position: 0% 50%;
     }
 
     50% {
         background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
     }
 }
 
@@ -43,13 +41,16 @@ html {
 #starburn {
     position: relative;
     margin: 0 auto;
-    width: min(100vw, 2000px);
-    height: min(100vh, 2000px);
+    width: 100vw;
+    height: 100vh;
 }
 
 .star {
     cursor: pointer;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
     position: absolute;
     z-index: 1;
     top: 0;
@@ -58,16 +59,19 @@ html {
     border-radius: 50%;
     outline: 0;
     border: 0;
-    font-size: 0;
     font-size: 1vw;
-    line-height: 100%;
+    line-height: 0;
     color: transparent;
     background: transparent;
-    width: 2%;
+    width: 3%;
     height: auto;
     aspect-ratio: 1 / 1;
-    overflow: hidden;
     animation: pulse-animation 2s infinite;
+    animation-fill-mode: forwards;
+    text-align: center;
+    transform: none;
+    filter: none;
+    transition: font-size 2s ease, opacity 2s ease, filter 2s ease, color 0.25s ease;
 }
 
 @keyframes pulse-animation {
@@ -82,26 +86,19 @@ html {
     }
 }
 
-/* animate appear then get larger till vanish */
-/* .star:after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
-    background-blend-mode: color-dodge;
+.star.burn {
+    pointer-events: none;
+    animation: none;
+    font-size: 50vw !important;
+    opacity: 0;
+    color: #ff4757 !important;
+    filter: blur(5vw);
 }
-*/
-/* HERE! ADD! "Animated Glow Particle Effect" from https://csscrafter.com/css-particle-effects/ */
-/* also check HERE / check license: https://www.jotform.com/blog/particles-animation-codepen-97659/ */
 
-.star:hover,
-.star:focus,
-.star:active {
-    color: #3742fa !important;
+.star:not(.burn):hover,
+.star:not(.burn):focus,
+.star:not(.burn):active {
+    color: #ff4757 !important;
 }
 
 .star.s1 {
@@ -148,4 +145,25 @@ html {
     :root {
         --scale: 2;
     }
+}
+
+video.starvideo {
+    display: none;
+    position: absolute;
+    margin: 0 auto;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+    mix-blend-mode: screen;
+}
+
+#stargallery video.starvideo {
+    mix-blend-mode: overlay;
+    opacity: 0.75;
 }
