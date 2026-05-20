@@ -35,12 +35,12 @@ $(function () {
     // CONTROLS
     var clickTimer;
 
-    $('#starcontrol button').on('mousedown', function (e) {
+    $('#starcontrol button').on('mousedown touchstart', function (e) {
         $(this).trigger('click');
         clickTimer = setInterval(function () {
             $(e.target).trigger('click');
         }, 100);
-    }).on('mouseup mouseleave', function () {
+    }).on('mouseup mouseleave touchend', function () {
         clearInterval(clickTimer);
     });
     $('#starcontrol button').on('click', function (e) {
