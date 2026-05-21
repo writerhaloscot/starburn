@@ -1,10 +1,15 @@
 /* STARBURN */
 /* hit area larger than stars */
 /* Palettes: https://flatuicolors.com/palette/au, https://flatuicolors.com/palette/cn */
+/* Animated Gradient: https://codepen.io/P1N2O/pen/pyBNzX */
+
 * {
     margin: 0;
     padding: 0;
-    font-family: Tahoma, Verdana, Arial, sans-serif;
+    font-family: "Roboto Condensed", Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-optical-sizing: auto;
     box-sizing: border-box;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -13,19 +18,25 @@
 
 :root {
     --scale: 1;
+    --brand: #ff4757;
 }
 
-
-/* Animated Gradient: https://codepen.io/P1N2O/pen/pyBNzX */
 body,
 html {
     width: 100%;
     height: 100%;
     background-color: #000;
+    color: #fff;
     overflow: hidden;
-    background: linear-gradient(-45deg, #130f40, #30336b, #3742fa, #ff4757);
+    background: linear-gradient(-45deg, #130f40, #30336b, #3742fa, var(--brand));
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
+    transition: background 1s ease;
+}
+
+body.slumber {
+    background: #000;
+    animation-play-state: paused;
 }
 
 @keyframes gradient {
@@ -95,14 +106,14 @@ html {
     animation: none;
     font-size: 50vw !important;
     opacity: 0;
-    color: #ff4757 !important;
+    color: var(--brand) !important;
     filter: blur(5vw);
 }
 
 .star:not(.burn):hover,
 .star:not(.burn):focus,
 .star:not(.burn):active {
-    color: #ff4757 !important;
+    color: var(--brand) !important;
 }
 
 .star.s1 {
@@ -179,10 +190,11 @@ video.starvideo {
 
 /* BLACK HOLE: MAIN CHARACTER */
 #blackhole {
+    display: none;
     position: fixed;
-    z-index: 9999;
-    left: 0;
-    bottom: 0;
+    z-index: 999;
+    left: 50%;
+    top: 50%;
     background: #000;
     color: transparent;
     width: 3vw;
@@ -191,10 +203,20 @@ video.starvideo {
     line-height: 100%;
     border-radius: 50%;
     box-shadow: 0 0 2vw 1vw #000;
-    border: 0.075vw solid #ff4757;
+    border: 0.075vw solid var(--brand);
     touch-action: none;
     transform: translate(-50%, -50%);
     mix-blend-mode: overlay;
+}
+
+#blackhole.big {
+    width: 5vw;
+    height: 5vw;
+}
+
+#blackhole.massive {
+    width: 7vw;
+    height: 7vw;
 }
 
 @media (max-width: 1024px) {
@@ -202,7 +224,17 @@ video.starvideo {
         width: 5vw;
         height: 5vw;
         box-shadow: 0 0 4vw 2vw #000;
-        border: 0.15vw solid #ff4757;
+        border-width: 0.15vw;
+    }
+
+    #blackhole.big {
+        width: 7vw;
+        height: 7vw;
+    }
+
+    #blackhole.massive {
+        width: 9vw;
+        height: 9vw;
     }
 }
 
@@ -211,13 +243,24 @@ video.starvideo {
         width: 7vw;
         height: 7vw;
         box-shadow: 0 0 8vw 4vw #000;
-        border: 0.25vw solid #ff4757;
+        border-width: 0.25vw;
+    }
+
+    #blackhole.big {
+        width: 9vw;
+        height: 9vw;
+    }
+
+    #blackhole.massive {
+        width: 11vw;
+        height: 11vw;
     }
 }
 
 
 /* STAR COUNTER */
 #starcounter {
+    display: none;
     pointer-events: none;
     position: absolute;
     z-index: 99;
@@ -225,9 +268,9 @@ video.starvideo {
     right: 0;
     top: 0;
     text-align: center;
-    padding: 0.75vw;
     color: #fff;
     text-transform: uppercase;
+    padding: 1vw;
     font-size: 1vw;
     letter-spacing: 0.25vw;
     background: rgba(0, 0, 0, 0.34);
@@ -240,14 +283,255 @@ video.starvideo {
 
 @media (max-width: 1024px) {
     #starcounter {
-        padding: 1.5vw;
-        font-size: 1.5vw;
+        padding: 2vw;
+        font-size: 2vw;
     }
 }
 
 @media (max-width: 768px) {
     #starcounter {
+        padding: 3vw;
+        font-size: 3vw;
+    }
+}
+
+
+/* WELCOME SCREEN */
+#starwelcome {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 14vw #000;
+    border: 0.07vw solid rgba(255, 255, 255, 0.34);
+    padding: 1vw;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-col {
+    width: 49%;
+}
+
+#starwelcome * {
+    line-height: 120%;
+}
+
+label[for='starvid'] {
+    cursor: pointer;
+}
+
+#starwelcome label,
+#starwelcome select,
+#starwelcome button {
+    display: block;
+    appearance: none;
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+}
+
+#starwelcome button {
+    cursor: pointer;
+}
+
+#starwelcome h1 {
+    font-size: 3vw;
+    letter-spacing: 0.3vw;
+}
+
+#starwelcome p {
+    font-size: 1.2vw;
+    letter-spacing: 0.1vw;
+    margin-top: 1vw;
+}
+
+#starwelcome p small {
+    display: block;
+    font-size: 70%;
+    white-space: nowrap;
+}
+
+#starwelcome p small a {
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 0.1vw solid transparent;
+}
+
+#starwelcome p small a:hover,
+#starwelcome p small a:focus,
+#starwelcome p small a:active {
+    text-decoration: none;
+    outline: 0;
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+#starwelcome p small a:after {
+    content: '';
+    display: inline-block;
+    width: 0.7vw;
+    height: 0.7vw;
+    margin-left: 0.2vw;
+    background-image: url('../media/external-link.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+#starwelcome label,
+#starwelcome select,
+#starwelcome button,
+#starwelcome p.done {
+    text-transform: uppercase;
+    font-size: 0.84vw;
+    letter-spacing: 0.3vw;
+    margin-top: 1vw;
+}
+
+#starwelcome p.done {
+    margin-top: 0;
+}
+
+#starwelcome hr {
+    border: 0;
+    height: 0.1vw;
+    background: rgba(255, 255, 255, 0.25);
+    margin: 1vw auto;
+}
+
+#starwelcome select {
+    cursor: pointer;
+    appearance: base-set;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: url('../media/select-chevron.svg');
+    background-repeat: no-repeat;
+    background-position: 95% center;
+    background-size: auto 75%;
+    color: #fff;
+    width: 100%;
+    padding: 0.3vw;
+    border: 0.1vw solid white;
+    margin-top: 0.25vw !important;
+}
+
+#starwelcome button {
+    background: rgba(0, 0, 0, 0.34);
+    color: var(--brand);
+    width: 100%;
+    padding: 1.4vw 0.7vw;
+    border: 0.1vw solid var(--brand);
+}
+
+#starwelcome select:hover,
+#starwelcome select:focus,
+#starwelcome select:active {
+    border-color: var(--brand);
+}
+
+#starwelcome button:hover,
+#starwelcome button:focus,
+#starwelcome button:active {
+    background: var(--brand);
+    color: #000;
+}
+
+@media (max-width: 1024px) {
+    #starwelcome {
         padding: 2vw;
-        font-size: 2vw;
+        width: 61%;
+    }
+
+    #starwelcome h1 {
+        font-size: 4vw;
+    }
+
+    #starwelcome p {
+        font-size: 1.8vw;
+    }
+
+    #starwelcome label,
+    #starwelcome select,
+    #starwelcome button,
+    #starwelcome p.done {
+        font-size: 1.4vw;
+    }
+
+    #starwelcome p,
+    #starwelcome label,
+    #starwelcome button,
+    #starwelcome hr {
+        margin-top: 2vw;
+    }
+
+    #starwelcome hr {
+        margin-bottom: 2vw;
+    }
+
+    #starwelcome select {
+        padding: 0.6vw;
+    }
+
+    #starwelcome button {
+        padding: 2vw 1vw;
+    }
+
+    #starwelcome p small a:after {
+        width: 1vw;
+        height: 1vw;
+        margin-left: 0.3vw;
+    }
+}
+
+@media (max-width: 768px) {
+    #starwelcome {
+        width: 84%;
+        padding: 3vw;
+    }
+
+    #starwelcome h1 {
+        font-size: 5vw;
+    }
+
+    #starwelcome p {
+        font-size: 3vw;
+    }
+
+    #starwelcome label,
+    #starwelcome select,
+    #starwelcome button,
+    #starwelcome p.done {
+        font-size: 2.5vw;
+    }
+
+    #starwelcome p,
+    #starwelcome label,
+    #starwelcome button,
+    #starwelcome hr {
+        margin-top: 3vw;
+    }
+
+    #starwelcome hr {
+        margin-bottom: 3vw;
+    }
+
+    #starwelcome select {
+        padding: 0.9vw;
+    }
+
+    #starwelcome button {
+        padding: 2.6vw 1.3vw;
+    }
+
+    #starwelcome p small a:after {
+        width: 1.5vw;
+        height: 1.5vw;
+        margin-left: 0.4vw;
     }
 }

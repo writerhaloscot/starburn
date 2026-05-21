@@ -18,15 +18,76 @@
     <meta name="twitter:image:alt" content="Starburn | Deadflame Studio">
     <!-- Pixabay Public Domain Image: davidrockdesign-sun-2081062 -->
     <link rel="shortcut icon" href="media/favicon.png?v=1" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css?v=1.29" />
 </head>
 
 <body>
 
-    <!-- STARBURN -->
-    <!-- Be a black hole. Eat all the stars. -->
-    <!-- Be the black hole at the end of the universe that you were always meant to be. Let no one escape you. Welcome to the end of the universe. Eat the stars before the stars burn you. For fans of Bust-A-Move and Bejeweled. Mention to turn low power mode off for best effect. -->
-
+    <!-- STARBURN: Randomized game. -->
+    <div id="starwelcome">
+        <h1>Starburn</h1>
+        <p>Welcome to the end of the universe.
+            <br />Be a black hole. Eat all the stars.
+        </p>
+        <!-- <p>Let no one escape you.</p> -->
+        <hr>
+        <p>Move the black hole with your mouse or finger.
+            <br />Turn off low power mode for best visuals.
+        </p>
+        <hr>
+        <form action="/action_page.php" autocomplete="off">
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="numstars">Number of Stars:</label>
+                    <select name="numstars" id="numstars" tabindex="0" autocomplete="off">
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                        <option value="400">400</option>
+                        <option value="700">700</option>
+                    </select>
+                </div>
+                <div class="form-col">
+                    <label for="bhsize">Black Hole Size:</label>
+                    <select name="bhsize" id="bhsize" tabindex="0" autocomplete="off">
+                        <option value="normal" selected>Normal</option>
+                        <option value="big">Big</option>
+                        <option value="massive">Massive</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="starvid"><input type="checkbox" id="starvid" name="starvid" autocomplete="off"> Turn Off Video?</label>
+                </div>
+                <div class="form-col">
+                    <label for="starsong">Play Music?</label>
+                    <select name="starsong" id="starsong" tabindex="0" autocomplete="off">
+                        <option value="no" selected>No</option>
+                        <option value="sadpiano-5688.mp3">Piano</option>
+                        <option value="chillguitar-5642.mp3">Guitar</option>
+                        <option value="calm-110241.mp3">Calm</option>
+                        <option value="forestlullaby-110624.mp3">Lullaby</option>
+                        <option value="foreboding-10376.mp3">Foreboding</option>
+                        <option value="chillelectronic-217007.mp3">Electronic</option>
+                        <option value="emopop-351436.mp3">Emo Pop</option>
+                        <option value="cinhiphop-315904.mp3">Heavy Beat</option>
+                        <option value="cinmodern-491630.mp3">Cinematic</option>
+                        <option value="cyberpunk-469493.mp3">Cyberpunk</option>
+                        <option value="citycafe-159065.mp3">City Cafe</option>
+                        <option value="jazz-525518.mp3">Smooth Jazz</option>
+                        <option value="swing-377648.mp3">Swing</option>
+                        <option value="bigband-132244.mp3">Big Band</option>
+                    </select>
+                </div>
+            </div>
+            <p><small>Royalty-free, no-copyright songs and videos from <a href=" https://pixabay.com" target="_blank" aria label="Pixabay (opens in a new tab)">Pixabay</a>.</small></p>
+            <button id="starstart">Begin</button>
+        </form>
+    </div>
 
     <div id="starburn">
         <div id="blackhole">&bull;</div>
