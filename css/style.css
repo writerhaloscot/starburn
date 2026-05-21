@@ -178,6 +178,7 @@ video.starvideo {
     object-fit: cover;
     object-position: center;
     pointer-events: none;
+    touch-action: none;
     mix-blend-mode: soft-light;
     opacity: 0.5;
 }
