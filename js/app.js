@@ -2,6 +2,16 @@ $(function () {
 
     // Safari + Low Power Mode check for video
     // Pixabay Public Domain Videos: 215694.mp4, 215697.mp4, 215695.mp4, 215762.mp4, 138556-769988117.mp4
+    $('.starvideo').each(function () {
+        var video = $(this);
+        var sources = video.find('source');
+        sources.each(function () {
+            var src = $(this).data('src');
+            $(this).attr('src', src);
+        });
+        video[0].load();
+    });
+
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     document.getElementById('starloop').play().then(() => {
         // Low Power Mode Off and/or not Safari. Show Video.
@@ -59,14 +69,29 @@ $(function () {
     }
 
     // TIE TO MOUSEMOVE + TOUCHMOVE
-    console.log('here, tied to pointer');
     document.addEventListener('pointermove', (e) => {
         bh.style.left = `${e.clientX}px`;
         bh.style.top = `${e.clientY}px`;
     });
+    const div = document.getElementById('draggableDiv');
+    let offsetX, offsetY;
+    bh.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const touch = e.targetTouches[0];
+        offsetX = touch.clientX - bh.offsetLeft;
+        offsetY = touch.clientY - bh.offsetTop;
+    });
+    bh.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const touch = e.targetTouches[0];
+        bh.style.left = (touch.clientX - offsetX) + 'px';
+        bh.style.top = (touch.clientY - offsetY) + 'px';
+    }, {
+        passive: false
+    });
 
 
-    /* Need welcome screen - see html doc, hide controls/black hole/counter so just floating white text over maybe border opacity cool so video loads
+    /* Need welcome screen - see html doc - welcome to the end of the universe, hide controls/black hole/counter so just floating white text over maybe border opacity cool so video loads
             Random so different each time / difficulty random
             choose if want video & soothing audio before start so ADA? see Skinless Bark for audio
             if eat all the stars can either play again or download certificate or something fun
