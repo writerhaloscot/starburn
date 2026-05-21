@@ -179,100 +179,38 @@ video.starvideo {
 
 /* BLACK HOLE: MAIN CHARACTER */
 #blackhole {
-    position: absolute;
-    z-index: 100;
+    position: fixed;
+    z-index: 9999;
     left: 0;
     bottom: 0;
     background: #000;
     color: transparent;
-    width: 2vw;
+    width: 3vw;
     height: auto;
     font-size: 0.1vw;
     line-height: 100%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    transition: left 0.5s ease, bottom 0.5s ease;
     box-shadow: 0 0 2vw 1vw #000;
     border: 0.075vw solid #ff4757;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: overlay;
 }
 
 @media (max-width: 1024px) {
     #blackhole {
-        width: 3vw;
+        width: 5vw;
+        box-shadow: 0 0 4vw 2vw #000;
         border: 0.15vw solid #ff4757;
     }
 }
 
 @media (max-width: 768px) {
     #blackhole {
-        width: 4vw;
+        width: 7vw;
+        box-shadow: 0 0 8vw 4vw #000;
         border: 0.25vw solid #ff4757;
-    }
-}
-
-
-/* NAV */
-#starcontrol {
-    position: absolute;
-    z-index: 99;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.15);
-    text-align: center;
-    padding: 0.75vw;
-}
-
-#starcontrol button {
-    cursor: pointer;
-    appearance: none;
-    border: 0;
-    outline: 0;
-    background: transparent;
-    color: #fff;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1vw;
-    letter-spacing: 0.2vw;
-    padding: 0 0.5vw;
-}
-
-#starcontrol button:hover,
-#starcontrol button:focus,
-#starcontrol button:active,
-#starcontrol button.active {
-    text-decoration: none;
-    outline: 0;
-    color: #ff4757;
-}
-
-#starcontrol button.disabled {
-    pointer-events: none;
-    opacity: 0.4;
-    color: #fff !important;
-}
-
-@media (max-width: 1024px) {
-    #starcontrol {
-        padding: 1.5vw;
-    }
-
-    #starcontrol button {
-        font-size: 1.5vw;
-        letter-spacing: 0.25vw;
-        padding: 0 0.75vw;
-    }
-}
-
-@media (max-width: 768px) {
-    #starcontrol {
-        padding: 2vw;
-    }
-
-    #starcontrol button {
-        font-size: 2.5vw;
-        letter-spacing: 0.3vw;
-        padding: 0 1vw;
     }
 }
 
